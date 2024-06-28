@@ -14,6 +14,7 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/profile")
+@CrossOrigin
 @PreAuthorize("isAuthenticated()")
 public class ProfileController {
     private ProfileDao profileDao;
