@@ -14,7 +14,6 @@ import org.yearup.models.ShoppingCartItem;
 import org.yearup.models.User;
 
 import java.security.Principal;
-import java.util.HashMap;
 import java.util.Map;
 
 // convert this class to a REST controller
@@ -70,7 +69,6 @@ public class ShoppingCartController
             ShoppingCart cart = shoppingCartDao.getByUserId(userId);
             if (cart == null) {
                 cart = new ShoppingCart();
-                cart.setItems(new HashMap<>());
             }
 
             if (cart.contains(productId)) {
