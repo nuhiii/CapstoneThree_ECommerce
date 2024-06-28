@@ -33,13 +33,13 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, userId);
 
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    Product product = MySqlProductDao.mapRow(resultSet);
+            try (ResultSet row = statement.executeQuery()) {
+                while (row.next()) {
+                    Product product = MySqlProductDao.mapRow(row);
 
                     ShoppingCartItem item = new ShoppingCartItem();
                     item.setProduct(product);
-                    item.setQuantity(resultSet.getInt("quantity"));
+                    item.setQuantity(row.getInt("quantity"));
 
                     cart.add(item);
                 }
